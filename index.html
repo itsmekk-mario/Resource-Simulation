@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Global Resource Shock Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Macro scenario sandbox</p>
+            <h1>세계 자원 충격 시뮬레이터</h1>
+          </div>
+          <div class="status-pill" id="scenarioLabel">기본 시나리오</div>
+        </header>
+
+        <section class="sim-grid">
+          <aside class="control-panel" aria-label="시나리오 설정">
+            <div class="field">
+              <label for="actor">행동 국가</label>
+              <select id="actor"></select>
+            </div>
+
+            <div class="field">
+              <label for="target">대상 국가</label>
+              <select id="target"></select>
+            </div>
+
+            <div class="field">
+              <label for="action">행동 유형</label>
+              <select id="action">
+                <option value="sanction">경제 제재</option>
+                <option value="embargo">자원 금수</option>
+                <option value="blockade">해상 물류 차단</option>
+                <option value="conflict">군사 충돌</option>
+                <option value="cyber">항만·에너지망 사이버 장애</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="resource">중점 자원</label>
+              <select id="resource">
+                <option value="oil">원유</option>
+                <option value="gas">천연가스</option>
+                <option value="grain">곡물</option>
+                <option value="chips">반도체</option>
+                <option value="critical">핵심광물</option>
+                <option value="shipping">해상 물류</option>
+              </select>
+            </div>
+
+            <div class="slider-field">
+              <div class="slider-label">
+                <label for="severity">강도</label>
+                <output id="severityValue">45%</output>
+              </div>
+              <input id="severity" type="range" min="0" max="100" value="45">
+            </div>
+
+            <div class="slider-field">
+              <div class="slider-label">
+                <label for="duration">지속 기간</label>
+                <output id="durationValue">90일</output>
+              </div>
+              <input id="duration" type="range" min="7" max="365" value="90">
+            </div>
+
+            <div class="slider-field">
+              <div class="slider-label">
+                <label for="coalition">동맹 동참률</label>
+                <output id="coalitionValue">40%</output>
+              </div>
+              <input id="coalition" type="range" min="0" max="100" value="40">
+            </div>
+
+            <div class="slider-field">
+              <div class="slider-label">
+                <label for="reserves">전략 비축 완충</label>
+                <output id="reservesValue">35%</output>
+              </div>
+              <input id="reserves" type="range" min="0" max="100" value="35">
+            </div>
+          </aside>
+
+          <section class="results-panel" aria-label="시뮬레이션 결과">
+            <div class="metric-strip">
+              <article class="metric">
+                <span>브렌트 유가</span>
+                <strong id="oilMetric">+0%</strong>
+                <small id="oilHint">기준 대비</small>
+              </article>
+              <article class="metric">
+                <span>LNG 가격</span>
+                <strong id="gasMetric">+0%</strong>
+                <small>아시아 현물 추정</small>
+              </article>
+              <article class="metric">
+                <span>세계 물가</span>
+                <strong id="inflationMetric">+0.0%p</strong>
+                <small>12개월 영향</small>
+              </article>
+              <article class="metric">
+                <span>세계 GDP</span>
+                <strong id="gdpMetric">-0.0%</strong>
+                <small>연율 환산</small>
+              </article>
+            </div>
+
+            <div class="map-and-bars">
+              <div class="world-board" aria-label="국가별 영향 지도">
+                <svg class="world-map" viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label="세계 지도">
+                  <defs>
+                    <linearGradient id="oceanGradient" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#d9edf2"></stop>
+                      <stop offset="1" stop-color="#bcd7df"></stop>
+                    </linearGradient>
+                    <filter id="landShadow" x="-10%" y="-10%" width="120%" height="120%">
+                      <feDropShadow dx="0" dy="0.6" stdDeviation="0.45" flood-color="#5c7280" flood-opacity="0.22"></feDropShadow>
+                    </filter>
+                  </defs>
+                  <rect width="100" height="100" fill="url(#oceanGradient)"></rect>
+                  <g class="graticule">
+                    <path d="M0 10H100M0 20H100M0 30H100M0 40H100M0 50H100M0 60H100M0 70H100M0 80H100M0 90H100"></path>
+                    <path d="M8.3 0V100M16.6 0V100M25 0V100M33.3 0V100M41.6 0V100M50 0V100M58.3 0V100M66.6 0V100M75 0V100M83.3 0V100M91.6 0V100"></path>
+                  </g>
+                  <g id="mapLandLayer" class="land" filter="url(#landShadow)"></g>
+                  <path id="routeLayer" class="route-line" d=""></path>
+                </svg>
+                <div id="chokeLayer"></div>
+                <div id="countryLayer"></div>
+              </div>
+
+              <div class="impact-list" id="impactList"></div>
+            </div>
+
+            <section class="analysis-band">
+              <div>
+                <h2>주요 파급 경로</h2>
+                <p id="narrative"></p>
+              </div>
+              <div>
+                <h2>영향 국가 순위</h2>
+                <ol id="vulnerableList"></ol>
+              </div>
+            </section>
+          </section>
+        </section>
+
+        <footer class="footnote">
+          자료 기준: Natural Earth 지도 데이터, U.S. EIA 에너지 통계, IEA Gas Market Report·Global Critical Minerals Outlook, USDA WASDE·곡물 무역 통계, UNCTAD Review of Maritime Transport. 이 도구는 교육용 정규화 모델이며 실제 정책·군사 판단용 예측 모델이 아닙니다.
+        </footer>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
