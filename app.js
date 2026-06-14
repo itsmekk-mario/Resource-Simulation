@@ -1,44 +1,44 @@
 const countries = [
-  { id: "usa", name: "미국", region: "na", lat: 39.8, lon: -98.6, oil: 0.74, gas: 0.9, grain: 0.62, chips: 0.34, critical: 0.2, shipping: 0.58, importNeed: 0.2, marketWeight: 0.98, note: "EIA: 에너지 순수출국, 원유는 수입·수출 병행" },
-  { id: "canada", name: "캐나다", region: "na", lat: 56.1, lon: -106.3, oil: 0.62, gas: 0.48, grain: 0.38, chips: 0.04, critical: 0.22, shipping: 0.32, importNeed: 0.18, marketWeight: 0.45, note: "EIA/IEA: 원유·가스·광물 공급국" },
-  { id: "mexico", name: "멕시코", region: "na", lat: 23.6, lon: -102.5, oil: 0.28, gas: 0.08, grain: 0.08, chips: 0.06, critical: 0.08, shipping: 0.34, importNeed: 0.42, marketWeight: 0.34, note: "북미 제조·에너지 연계" },
-  { id: "brazil", name: "브라질", region: "sa", lat: -10.8, lon: -52.9, oil: 0.4, gas: 0.08, grain: 0.72, chips: 0.02, critical: 0.16, shipping: 0.46, importNeed: 0.26, marketWeight: 0.48, note: "USDA: 대두·옥수수 주요 수출국" },
-  { id: "argentina", name: "아르헨티나", region: "sa", lat: -38.4, lon: -63.6, oil: 0.16, gas: 0.14, grain: 0.48, chips: 0.01, critical: 0.08, shipping: 0.26, importNeed: 0.32, marketWeight: 0.25, note: "USDA: 곡물·유지종자 수출 영향" },
-  { id: "chile", name: "칠레", region: "sa", lat: -35.7, lon: -71.5, oil: 0.02, gas: 0.02, grain: 0.02, chips: 0.01, critical: 0.72, shipping: 0.28, importNeed: 0.55, marketWeight: 0.24, note: "IEA: 구리·리튬 공급망 핵심" },
+  { id: "usa", name: "미국", region: "na", lat: 39.8, lon: -98.6, oil: 1, gas: 0.94, grain: 0.66, chips: 0.34, critical: 0.24, shipping: 0.62, importNeed: 0.18, marketWeight: 1, note: "EIA: 최대 원유·가스 생산국, 주요 LNG·곡물 공급국" },
+  { id: "canada", name: "캐나다", region: "na", lat: 56.1, lon: -106.3, oil: 0.68, gas: 0.52, grain: 0.46, chips: 0.04, critical: 0.28, shipping: 0.34, importNeed: 0.18, marketWeight: 0.48, note: "EIA/IEA/USDA: 원유·가스·곡물·광물 공급국" },
+  { id: "mexico", name: "멕시코", region: "na", lat: 23.6, lon: -102.5, oil: 0.28, gas: 0.08, grain: 0.08, chips: 0.06, critical: 0.08, shipping: 0.34, importNeed: 0.42, marketWeight: 0.34, note: "EIA/UNCTAD: 북미 제조·에너지 연계" },
+  { id: "brazil", name: "브라질", region: "sa", lat: -10.8, lon: -52.9, oil: 0.42, gas: 0.08, grain: 0.78, chips: 0.02, critical: 0.16, shipping: 0.48, importNeed: 0.26, marketWeight: 0.5, note: "USDA: 대두·옥수수 주요 수출국" },
+  { id: "argentina", name: "아르헨티나", region: "sa", lat: -38.4, lon: -63.6, oil: 0.18, gas: 0.18, grain: 0.54, chips: 0.01, critical: 0.3, shipping: 0.28, importNeed: 0.3, marketWeight: 0.28, note: "USDA/IEA: 곡물·유지종자·리튬·가스 공급 영향" },
+  { id: "chile", name: "칠레", region: "sa", lat: -35.7, lon: -71.5, oil: 0.02, gas: 0.02, grain: 0.02, chips: 0.01, critical: 0.78, shipping: 0.28, importNeed: 0.55, marketWeight: 0.26, note: "IEA: 구리·리튬 공급망 핵심" },
   { id: "uk", name: "영국", region: "eu", lat: 55.4, lon: -3.4, oil: 0.14, gas: 0.16, grain: 0.05, chips: 0.08, critical: 0.04, shipping: 0.62, importNeed: 0.58, marketWeight: 0.62, note: "UNCTAD: 해상 금융·보험 허브" },
-  { id: "norway", name: "노르웨이", region: "eu", lat: 60.5, lon: 8.5, oil: 0.32, gas: 0.58, grain: 0.01, chips: 0.02, critical: 0.04, shipping: 0.34, importNeed: 0.24, marketWeight: 0.32, note: "IEA/EIA: 유럽 가스 공급국" },
+  { id: "norway", name: "노르웨이", region: "eu", lat: 60.5, lon: 8.5, oil: 0.34, gas: 0.64, grain: 0.01, chips: 0.02, critical: 0.04, shipping: 0.36, importNeed: 0.22, marketWeight: 0.34, note: "IEA/EIA: 유럽 가스 공급국" },
   { id: "germany", name: "독일", region: "eu", lat: 51.2, lon: 10.5, oil: 0.04, gas: 0.04, grain: 0.08, chips: 0.18, critical: 0.06, shipping: 0.58, importNeed: 0.74, marketWeight: 0.72, note: "IEA/Eurostat: 에너지 수입·제조 노출" },
   { id: "france", name: "프랑스", region: "eu", lat: 46.2, lon: 2.2, oil: 0.02, gas: 0.02, grain: 0.2, chips: 0.08, critical: 0.04, shipping: 0.42, importNeed: 0.52, marketWeight: 0.56, note: "USDA: EU 곡물 공급 기여" },
-  { id: "netherlands", name: "네덜란드", region: "eu", lat: 52.1, lon: 5.3, oil: 0.04, gas: 0.04, grain: 0.05, chips: 0.22, critical: 0.04, shipping: 0.86, importNeed: 0.68, marketWeight: 0.54, note: "UNCTAD: 로테르담 물류 허브" },
-  { id: "italy", name: "이탈리아", region: "eu", lat: 41.9, lon: 12.6, oil: 0.03, gas: 0.04, grain: 0.04, chips: 0.08, critical: 0.03, shipping: 0.48, importNeed: 0.72, marketWeight: 0.48, note: "지중해 에너지·물류 노출" },
-  { id: "poland", name: "폴란드", region: "eu", lat: 52.0, lon: 19.1, oil: 0.02, gas: 0.03, grain: 0.12, chips: 0.04, critical: 0.06, shipping: 0.24, importNeed: 0.58, marketWeight: 0.34, note: "동유럽 제조·에너지 노출" },
-  { id: "russia", name: "러시아", region: "eu", lat: 61.5, lon: 105.3, oil: 0.86, gas: 0.84, grain: 0.44, chips: 0.05, critical: 0.24, shipping: 0.3, importNeed: 0.28, marketWeight: 0.68, note: "EIA/USDA: 에너지·밀 수출 충격" },
-  { id: "ukraine", name: "우크라이나", region: "eu", lat: 49.0, lon: 31.3, oil: 0.01, gas: 0.03, grain: 0.62, chips: 0.01, critical: 0.08, shipping: 0.24, importNeed: 0.5, marketWeight: 0.24, note: "USDA: 흑해 곡물 수출 영향" },
-  { id: "turkey", name: "튀르키예", region: "me", lat: 39.0, lon: 35.2, oil: 0.02, gas: 0.02, grain: 0.12, chips: 0.03, critical: 0.06, shipping: 0.62, importNeed: 0.66, marketWeight: 0.42, note: "흑해·지중해 해상 병목" },
-  { id: "saudi", name: "사우디아라비아", region: "me", lat: 23.9, lon: 45.1, oil: 0.96, gas: 0.18, grain: 0.02, chips: 0.01, critical: 0.03, shipping: 0.46, importNeed: 0.44, marketWeight: 0.62, note: "EIA/OPEC 자료 기반 원유 공급국" },
-  { id: "uae", name: "아랍에미리트", region: "me", lat: 23.4, lon: 53.8, oil: 0.5, gas: 0.16, grain: 0.01, chips: 0.02, critical: 0.03, shipping: 0.72, importNeed: 0.5, marketWeight: 0.42, note: "호르무즈·항만 허브" },
-  { id: "qatar", name: "카타르", region: "me", lat: 25.3, lon: 51.2, oil: 0.16, gas: 0.86, grain: 0.01, chips: 0.01, critical: 0.02, shipping: 0.36, importNeed: 0.36, marketWeight: 0.36, note: "IEA: LNG 공급 충격 핵심" },
-  { id: "iran", name: "이란", region: "me", lat: 32.4, lon: 53.7, oil: 0.54, gas: 0.48, grain: 0.06, chips: 0.01, critical: 0.06, shipping: 0.56, importNeed: 0.5, marketWeight: 0.36, note: "호르무즈 해협 인접 에너지 리스크" },
-  { id: "iraq", name: "이라크", region: "me", lat: 33.2, lon: 43.7, oil: 0.62, gas: 0.04, grain: 0.01, chips: 0.01, critical: 0.02, shipping: 0.28, importNeed: 0.5, marketWeight: 0.32, note: "EIA/OPEC: 원유 공급국" },
-  { id: "kuwait", name: "쿠웨이트", region: "me", lat: 29.3, lon: 47.5, oil: 0.5, gas: 0.04, grain: 0.01, chips: 0.01, critical: 0.02, shipping: 0.3, importNeed: 0.44, marketWeight: 0.28, note: "걸프 원유 공급국" },
-  { id: "israel", name: "이스라엘", region: "me", lat: 31.0, lon: 35.0, oil: 0.01, gas: 0.22, grain: 0.02, chips: 0.26, critical: 0.03, shipping: 0.38, importNeed: 0.52, marketWeight: 0.34, note: "동지중해 가스·첨단산업" },
+  { id: "netherlands", name: "네덜란드", region: "eu", lat: 52.1, lon: 5.3, oil: 0.04, gas: 0.04, grain: 0.05, chips: 0.22, critical: 0.04, shipping: 0.88, importNeed: 0.68, marketWeight: 0.56, note: "UNCTAD: 로테르담 물류 허브" },
+  { id: "italy", name: "이탈리아", region: "eu", lat: 41.9, lon: 12.6, oil: 0.03, gas: 0.04, grain: 0.04, chips: 0.08, critical: 0.03, shipping: 0.48, importNeed: 0.72, marketWeight: 0.48, note: "EIA/UNCTAD: 지중해 에너지·물류 노출" },
+  { id: "poland", name: "폴란드", region: "eu", lat: 52.0, lon: 19.1, oil: 0.02, gas: 0.03, grain: 0.12, chips: 0.04, critical: 0.06, shipping: 0.24, importNeed: 0.58, marketWeight: 0.34, note: "EIA/IEA: 동유럽 제조·에너지 노출" },
+  { id: "russia", name: "러시아", region: "eu", lat: 61.5, lon: 105.3, oil: 0.84, gas: 0.72, grain: 0.58, chips: 0.05, critical: 0.28, shipping: 0.3, importNeed: 0.28, marketWeight: 0.58, note: "EIA/USDA: 원유·가스·밀 수출 충격" },
+  { id: "ukraine", name: "우크라이나", region: "eu", lat: 49.0, lon: 31.3, oil: 0.01, gas: 0.03, grain: 0.54, chips: 0.01, critical: 0.08, shipping: 0.28, importNeed: 0.5, marketWeight: 0.24, note: "USDA/UNCTAD: 흑해 곡물 수출·항로 영향" },
+  { id: "turkey", name: "튀르키예", region: "me", lat: 39.0, lon: 35.2, oil: 0.02, gas: 0.02, grain: 0.12, chips: 0.03, critical: 0.06, shipping: 0.62, importNeed: 0.66, marketWeight: 0.42, note: "UNCTAD/USDA: 흑해·지중해 해상 병목" },
+  { id: "saudi", name: "사우디아라비아", region: "me", lat: 23.9, lon: 45.1, oil: 0.96, gas: 0.18, grain: 0.02, chips: 0.01, critical: 0.03, shipping: 0.46, importNeed: 0.36, marketWeight: 0.62, note: "EIA/OPEC 자료 기반 원유 공급국" },
+  { id: "uae", name: "아랍에미리트", region: "me", lat: 23.4, lon: 53.8, oil: 0.54, gas: 0.18, grain: 0.01, chips: 0.02, critical: 0.03, shipping: 0.78, importNeed: 0.42, marketWeight: 0.46, note: "UNCTAD/EIA: 호르무즈·항만·원유 허브" },
+  { id: "qatar", name: "카타르", region: "me", lat: 25.3, lon: 51.2, oil: 0.16, gas: 0.92, grain: 0.01, chips: 0.01, critical: 0.02, shipping: 0.38, importNeed: 0.3, marketWeight: 0.4, note: "EIA/IEA: LNG 공급 충격 핵심" },
+  { id: "iran", name: "이란", region: "me", lat: 32.4, lon: 53.7, oil: 0.54, gas: 0.48, grain: 0.06, chips: 0.01, critical: 0.06, shipping: 0.56, importNeed: 0.4, marketWeight: 0.36, note: "EIA: 호르무즈 해협 인접 에너지 리스크" },
+  { id: "iraq", name: "이라크", region: "me", lat: 33.2, lon: 43.7, oil: 0.68, gas: 0.04, grain: 0.01, chips: 0.01, critical: 0.02, shipping: 0.3, importNeed: 0.42, marketWeight: 0.34, note: "EIA/OPEC: 원유 공급국" },
+  { id: "kuwait", name: "쿠웨이트", region: "me", lat: 29.3, lon: 47.5, oil: 0.54, gas: 0.04, grain: 0.01, chips: 0.01, critical: 0.02, shipping: 0.32, importNeed: 0.34, marketWeight: 0.3, note: "EIA/OPEC: 걸프 원유 공급국" },
+  { id: "israel", name: "이스라엘", region: "me", lat: 31.0, lon: 35.0, oil: 0.01, gas: 0.22, grain: 0.02, chips: 0.26, critical: 0.03, shipping: 0.38, importNeed: 0.52, marketWeight: 0.34, note: "EIA/IEA: 동지중해 가스·첨단산업" },
   { id: "egypt", name: "이집트", region: "af", lat: 26.8, lon: 30.8, oil: 0.12, gas: 0.2, grain: 0.02, chips: 0.01, critical: 0.03, shipping: 0.92, importNeed: 0.72, marketWeight: 0.38, note: "UNCTAD: 수에즈 운하 병목" },
-  { id: "nigeria", name: "나이지리아", region: "af", lat: 9.1, lon: 8.7, oil: 0.42, gas: 0.14, grain: 0.02, chips: 0.01, critical: 0.04, shipping: 0.26, importNeed: 0.54, marketWeight: 0.28, note: "EIA: 아프리카 원유 공급국" },
+  { id: "nigeria", name: "나이지리아", region: "af", lat: 9.1, lon: 8.7, oil: 0.42, gas: 0.18, grain: 0.02, chips: 0.01, critical: 0.04, shipping: 0.26, importNeed: 0.54, marketWeight: 0.28, note: "EIA: 아프리카 원유·LNG 공급국" },
   { id: "southafrica", name: "남아프리카공화국", region: "af", lat: -30.6, lon: 22.9, oil: 0.01, gas: 0.01, grain: 0.04, chips: 0.02, critical: 0.38, shipping: 0.5, importNeed: 0.58, marketWeight: 0.3, note: "IEA: 백금족 등 광물 공급" },
-  { id: "drc", name: "콩고민주공화국", region: "af", lat: -2.9, lon: 23.7, oil: 0.01, gas: 0.01, grain: 0.01, chips: 0.01, critical: 0.74, shipping: 0.12, importNeed: 0.62, marketWeight: 0.16, note: "IEA: 코발트 공급 집중" },
-  { id: "china", name: "중국", region: "as", lat: 35.9, lon: 104.2, oil: 0.22, gas: 0.18, grain: 0.18, chips: 0.46, critical: 0.92, shipping: 0.9, importNeed: 0.78, marketWeight: 0.96, note: "IEA/EIA: 원유 수입·광물 정제·제조 허브" },
-  { id: "india", name: "인도", region: "as", lat: 20.6, lon: 78.9, oil: 0.14, gas: 0.08, grain: 0.32, chips: 0.08, critical: 0.12, shipping: 0.58, importNeed: 0.62, marketWeight: 0.68, note: "EIA/USDA: 에너지 수입·곡물 시장" },
+  { id: "drc", name: "콩고민주공화국", region: "af", lat: -2.9, lon: 23.7, oil: 0.01, gas: 0.01, grain: 0.01, chips: 0.01, critical: 0.82, shipping: 0.12, importNeed: 0.62, marketWeight: 0.18, note: "IEA: 코발트 공급 집중" },
+  { id: "china", name: "중국", region: "as", lat: 35.9, lon: 104.2, oil: 0.34, gas: 0.2, grain: 0.16, chips: 0.46, critical: 1, shipping: 0.92, importNeed: 0.8, marketWeight: 1, note: "IEA/EIA/UNCTAD: 원유 수입·광물 정제·제조·해운 허브" },
+  { id: "india", name: "인도", region: "as", lat: 20.6, lon: 78.9, oil: 0.14, gas: 0.08, grain: 0.22, chips: 0.08, critical: 0.14, shipping: 0.6, importNeed: 0.64, marketWeight: 0.7, note: "EIA/USDA: 에너지 수입·대형 곡물 소비 시장" },
   { id: "japan", name: "일본", region: "as", lat: 36.2, lon: 138.3, oil: 0.01, gas: 0.01, grain: 0.04, chips: 0.34, critical: 0.14, shipping: 0.76, importNeed: 0.93, marketWeight: 0.56, note: "IEA: 에너지 수입 의존" },
   { id: "korea", name: "대한민국", region: "as", lat: 36.4, lon: 127.8, oil: 0.02, gas: 0.01, grain: 0.03, chips: 0.8, critical: 0.1, shipping: 0.82, importNeed: 0.94, marketWeight: 0.5, note: "IEA/산업자료: 에너지 수입·반도체 공급망" },
   { id: "taiwan", name: "대만", region: "as", lat: 23.7, lon: 121.0, oil: 0.01, gas: 0.01, grain: 0.02, chips: 0.98, critical: 0.08, shipping: 0.74, importNeed: 0.9, marketWeight: 0.46, note: "반도체 제조 집중" },
-  { id: "singapore", name: "싱가포르", region: "as", lat: 1.35, lon: 103.8, oil: 0.08, gas: 0.04, grain: 0.01, chips: 0.08, critical: 0.02, shipping: 0.96, importNeed: 0.96, marketWeight: 0.44, note: "UNCTAD: 말라카 항로·벙커링 허브" },
-  { id: "indonesia", name: "인도네시아", region: "as", lat: -2.5, lon: 118.0, oil: 0.08, gas: 0.24, grain: 0.04, chips: 0.02, critical: 0.58, shipping: 0.48, importNeed: 0.42, marketWeight: 0.38, note: "IEA: 니켈 공급망" },
-  { id: "malaysia", name: "말레이시아", region: "as", lat: 4.2, lon: 102.0, oil: 0.12, gas: 0.22, grain: 0.01, chips: 0.18, critical: 0.04, shipping: 0.68, importNeed: 0.52, marketWeight: 0.34, note: "LNG·전자 공급망·말라카 인접" },
-  { id: "vietnam", name: "베트남", region: "as", lat: 14.1, lon: 108.3, oil: 0.04, gas: 0.04, grain: 0.08, chips: 0.1, critical: 0.08, shipping: 0.52, importNeed: 0.58, marketWeight: 0.32, note: "제조 공급망 분산 거점" },
-  { id: "thailand", name: "태국", region: "as", lat: 15.9, lon: 101.0, oil: 0.02, gas: 0.04, grain: 0.12, chips: 0.08, critical: 0.04, shipping: 0.42, importNeed: 0.62, marketWeight: 0.3, note: "식량·제조·해상물류 노출" },
-  { id: "philippines", name: "필리핀", region: "as", lat: 12.9, lon: 121.8, oil: 0.01, gas: 0.02, grain: 0.02, chips: 0.06, critical: 0.06, shipping: 0.46, importNeed: 0.72, marketWeight: 0.26, note: "섬 경제의 에너지·물류 노출" },
-  { id: "kazakhstan", name: "카자흐스탄", region: "as", lat: 48.0, lon: 66.9, oil: 0.38, gas: 0.08, grain: 0.22, chips: 0.01, critical: 0.28, shipping: 0.08, importNeed: 0.32, marketWeight: 0.26, note: "에너지·우라늄·곡물 공급" },
-  { id: "australia", name: "호주", region: "oc", lat: -25.3, lon: 133.8, oil: 0.06, gas: 0.72, grain: 0.44, chips: 0.02, critical: 0.66, shipping: 0.54, importNeed: 0.22, marketWeight: 0.42, note: "IEA/USDA: LNG·철광석·리튬·곡물" }
+  { id: "singapore", name: "싱가포르", region: "as", lat: 1.35, lon: 103.8, oil: 0.08, gas: 0.04, grain: 0.01, chips: 0.08, critical: 0.02, shipping: 1, importNeed: 0.96, marketWeight: 0.48, note: "UNCTAD: 말라카 항로·벙커링 허브" },
+  { id: "indonesia", name: "인도네시아", region: "as", lat: -2.5, lon: 118.0, oil: 0.08, gas: 0.26, grain: 0.04, chips: 0.02, critical: 0.72, shipping: 0.5, importNeed: 0.42, marketWeight: 0.42, note: "IEA: 니켈 공급망" },
+  { id: "malaysia", name: "말레이시아", region: "as", lat: 4.2, lon: 102.0, oil: 0.12, gas: 0.24, grain: 0.01, chips: 0.18, critical: 0.04, shipping: 0.7, importNeed: 0.46, marketWeight: 0.36, note: "EIA/UNCTAD: LNG·전자 공급망·말라카 인접" },
+  { id: "vietnam", name: "베트남", region: "as", lat: 14.1, lon: 108.3, oil: 0.04, gas: 0.04, grain: 0.14, chips: 0.1, critical: 0.16, shipping: 0.52, importNeed: 0.58, marketWeight: 0.32, note: "USDA/IEA: 쌀 수출·제조·희토류 잠재" },
+  { id: "thailand", name: "태국", region: "as", lat: 15.9, lon: 101.0, oil: 0.02, gas: 0.04, grain: 0.2, chips: 0.08, critical: 0.04, shipping: 0.42, importNeed: 0.62, marketWeight: 0.3, note: "USDA: 쌀 수출·제조·해상물류 노출" },
+  { id: "philippines", name: "필리핀", region: "as", lat: 12.9, lon: 121.8, oil: 0.01, gas: 0.02, grain: 0.02, chips: 0.06, critical: 0.12, shipping: 0.46, importNeed: 0.72, marketWeight: 0.26, note: "IEA: 섬 경제의 에너지·물류·니켈 노출" },
+  { id: "kazakhstan", name: "카자흐스탄", region: "as", lat: 48.0, lon: 66.9, oil: 0.4, gas: 0.08, grain: 0.26, chips: 0.01, critical: 0.34, shipping: 0.08, importNeed: 0.32, marketWeight: 0.28, note: "EIA/IEA/USDA: 에너지·우라늄·곡물 공급" },
+  { id: "australia", name: "호주", region: "oc", lat: -25.3, lon: 133.8, oil: 0.06, gas: 0.78, grain: 0.5, chips: 0.02, critical: 0.74, shipping: 0.56, importNeed: 0.22, marketWeight: 0.46, note: "IEA/USDA: LNG·철광석·리튬·곡물" }
 ];
 
 const resources = {
@@ -135,13 +135,13 @@ function clamp(value, min, max) {
 
 function signedPercent(value) {
   const sign = value >= 0 ? "+" : "";
-  return `${sign}${value.toFixed(1)}%`;
+  return `약 ${sign}${Math.round(value)}%`;
 }
 
 function riskColor(score) {
-  if (score >= 72) return "#b73a2f";
-  if (score >= 45) return "#b66b16";
-  return "#24724b";
+  if (score >= 72) return "#ff3b30";
+  if (score >= 45) return "#ff9500";
+  return "#34c759";
 }
 
 function project(lon, lat) {
@@ -212,9 +212,10 @@ function simulate() {
   const actorPower = actor.marketWeight * (0.7 + coalition * 0.55);
   const targetSupply = target[resourceKey] ?? target.shipping;
   const transitStress = (target.shipping + actor.shipping) / 2;
-  const chokepointStress = chokePoints
-    .filter((point) => point.resources.includes(resourceKey) || resourceKey === "shipping")
-    .reduce((sum, point) => sum + point.weight * distanceScore(target, point), 0) / 3;
+  const activeChokePoints = chokePoints
+    .filter((point) => point.resources.includes(resourceKey) || resourceKey === "shipping");
+  const chokepointStress = activeChokePoints
+    .reduce((sum, point) => sum + point.weight * distanceScore(target, point), 0) / Math.max(activeChokePoints.length, 1);
   const marketShock = severity * durationFactor * buffer * action.market;
   const directShock = marketShock * (0.4 + targetSupply * 0.75 + actorPower * 0.3);
   const shippingShock = marketShock * (resource.shipping ?? 0.15) * (0.8 + transitStress + chokepointStress);
@@ -292,7 +293,7 @@ function renderMap(data) {
       country.id === data.target.id ? "is-target" : ""
     ].join(" ");
     return `
-      <button class="${classes}" style="--x:${point.x}%; --y:${point.y}%; --size:${markerSize(country, resourceKey)}; --risk:${riskColor(score)}" title="${country.name}: 위험 ${score.toFixed(1)} | ${country.note}">
+      <button type="button" class="${classes}" style="--x:${point.x}%; --y:${point.y}%; --size:${markerSize(country, resourceKey)}; --risk:${riskColor(score)}" title="${country.name}: 위험 ${score.toFixed(1)} | ${country.note}" aria-label="${country.name} 위험도 ${score.toFixed(1)}. ${country.note}">
         <span class="marker-dot"></span>
         <span class="country-label">${country.name}</span>
       </button>
@@ -345,8 +346,8 @@ function render() {
   els.scenarioLabel.textContent = `${data.actor.name} → ${data.target.name} · ${data.action.label}`;
   els.oilMetric.textContent = signedPercent(data.oil);
   els.gasMetric.textContent = signedPercent(data.gas);
-  els.inflationMetric.textContent = `+${data.inflation.toFixed(1)}%p`;
-  els.gdpMetric.textContent = `-${data.gdp.toFixed(1)}%`;
+  els.inflationMetric.textContent = `약 +${data.inflation.toFixed(1)}%p`;
+  els.gdpMetric.textContent = `약 -${data.gdp.toFixed(1)}%`;
 
   renderBars(data);
   renderMap(data);

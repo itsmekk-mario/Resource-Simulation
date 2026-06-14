@@ -88,24 +88,24 @@
           <section class="results-panel" aria-label="시뮬레이션 결과">
             <div class="metric-strip">
               <article class="metric">
-                <span>브렌트 유가</span>
+                <span>유가 충격</span>
                 <strong id="oilMetric">+0%</strong>
-                <small id="oilHint">기준 대비</small>
+                <small id="oilHint">브렌트 기준 방향성</small>
               </article>
               <article class="metric">
-                <span>LNG 가격</span>
+                <span>LNG 충격</span>
                 <strong id="gasMetric">+0%</strong>
-                <small>아시아 현물 추정</small>
+                <small>현물 가격 압력</small>
               </article>
               <article class="metric">
-                <span>세계 물가</span>
+                <span>물가 압력</span>
                 <strong id="inflationMetric">+0.0%p</strong>
-                <small>12개월 영향</small>
+                <small>정규화 모델값</small>
               </article>
               <article class="metric">
-                <span>세계 GDP</span>
+                <span>GDP 압력</span>
                 <strong id="gdpMetric">-0.0%</strong>
-                <small>연율 환산</small>
+                <small>정규화 모델값</small>
               </article>
             </div>
 
@@ -131,6 +131,11 @@
                 </svg>
                 <div id="chokeLayer"></div>
                 <div id="countryLayer"></div>
+                <div class="map-legend" aria-label="지도 위험도 범례">
+                  <span><i class="risk-low"></i>낮음</span>
+                  <span><i class="risk-mid"></i>중간</span>
+                  <span><i class="risk-high"></i>높음</span>
+                </div>
               </div>
 
               <div class="impact-list" id="impactList"></div>
@@ -150,7 +155,7 @@
         </section>
 
         <footer class="footnote">
-          자료 기준: Natural Earth 지도 데이터, U.S. EIA 에너지 통계, IEA Gas Market Report·Global Critical Minerals Outlook, USDA WASDE·곡물 무역 통계, UNCTAD Review of Maritime Transport. 이 도구는 교육용 정규화 모델이며 실제 정책·군사 판단용 예측 모델이 아닙니다.
+          보정 기준: EIA International Energy Statistics·Today in Energy, IEA Global Critical Minerals Outlook 2025, USDA WASDE 2026년 6월, UNCTAD Review of Maritime Transport 2025, Natural Earth Admin-0 1:110m v5.1.1. 이 도구는 교육용 합성 노출 점수 모델이며 실제 정책·군사·투자 판단용 예측 모델이 아닙니다.
         </footer>
       </section>
     </main>
